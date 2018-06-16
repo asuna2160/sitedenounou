@@ -51,7 +51,7 @@ echo '<br>';
         <title>Ajout d'enfants</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="tp02_exo4.css">
+        <link rel="stylesheet" type="text/css" href="CSS.css">
     </head>
     <body>
         <form method="post" action="formulairedajoutdunenfant.php">
@@ -71,3 +71,38 @@ echo '<input type="hidden" name="numdeparent" value="' . $num . '">';
         </form>   
     </body>
 </html>
+
+<?php
+$lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
+    $lirenumdenfants->bindParam(1, $num);
+    $lirenumdenfants->execute();
+    
+
+
+
+?>
+
+<html>
+    <head>
+        <title>Louer une nounou</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="CSS.css">
+    </head>
+    <body>
+        <form method="post" action="demandedegarde.php">
+            
+            
+            
+            <div class="field">
+            <input type="submit" value="Reserver" /><br> 
+<?php
+echo '<input type="hidden" name="numdeparent" value="' . $num . '">';
+?>
+            </div>
+          
+        </form>   
+    </body>
+</html>
+
+

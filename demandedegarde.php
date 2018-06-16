@@ -1,3 +1,13 @@
+<?php
+require_once 'database1.php';
+session_start();
+$num=$_SESSION['num'];
+$lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
+    $lirenumdenfants->bindParam(1, $num);
+    $lirenumdenfants->execute();
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +31,7 @@
  
 <body style="background-color: aliceblue">
 <div class="container" >
-    <form action="traitementnounouponctuelle.php" class="form-horizontal">
+    <form method="post" action="traitementnounouponctuelle.php" class="form-horizontal">
         <fieldset style="background-color: white " >
             <legend>Demande de garde <br/></legend>
  
@@ -125,7 +135,21 @@
                     <input type="checkbox" name="langue"><label>portugais</label>
                 </div>
             </div>
- 
+            
+            <div class="field">
+                <label>Quels enfants voulez-vous garder ?</label><br>
+            <?php
+while ($donnes1 = $lirenumdenfants->fetch()){
+    $numenfant = $donnes1["numero d'enfants"];
+    $prenomenfant = $donnes1['prenom'];
+            
+echo '<input type="checkbox" name="' . $numenfant . '"/><label for="' . $numenfant . '">' . $prenomenfant . '</label>';
+
+    }        
+   
+            ?>
+            
+            </div>
             <center>
                 <input type="submit" name="submit" value="ok" style="font-size: 15px">
             </center>

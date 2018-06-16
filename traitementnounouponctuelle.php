@@ -30,7 +30,7 @@ $typearegarder = array(
 $type = $typearegarder[$type1];
 $JD=$_POST['JD'];
 $JF=$_POST['JF'];
-
+//var_dump($_POST);
 $moisenchiffres = array(
     "Janvier" => "01",
     "Février" => "02",
@@ -69,38 +69,39 @@ $HF=$_POST['HF'];
 $HD = $JD . ' ' . $HD;
 $HF = $JF . ' ' . $HF;
 
-echo $JD . '<br>';
-echo $JF . '<br>';
+//echo $JD . '<br>';
+//echo $JF . '<br>';
 
 //var_dump($_POST);
 
 
 $nounoudisponible= array();
 $alreadyused = 0; 
-echo 1;
+//echo 1;
 $lire = $basedd->prepare("SELECT * FROM Disponibilite where `jour debut` <= ? and `jour fin` >= ? ");
 $lire->bindParam(1, $JD);
 $lire->bindParam(2, $JF);
 //var_dump($lireinfosnounou);
-echo '<br>' . 12;
-$lireinfosnounou->execute();
-echo 12;
+//echo '<br>' . 12;
+$lire->execute();
+//echo 3;
 while ($donnoun = $lire->fetch())
 {
- echo 1;
+ //echo 1;
     $numdenounou=$donnoun['nounou'];
     foreach($nounoudisponible as $value){
         if ($numdenounou == $value){
-            echo 1;
+//            echo 'a';
             $alreadyused = $alreadyused + 1;
-            echo $alreadyused;
+ //           echo $alreadyused;
         }
     }
-    if ($alreadyused >= 1){
+    if ($alreadyused <= 1){
     $nounoudisponible[] = $numdenounou;
-    $alreadyused = 0;
+    
     
     }
+    $alreadyused = 0;
 }
 /* 
 $lireinfosnounou1 = $basedd->prepare("SELECT * FROM Nounou,Evaluation where nounou=numdenounou");
@@ -222,7 +223,7 @@ print '<img class=\'trombi\' src="' . $image . '" alt="texte alternatif" />';
         </div>
     </div>
     <div class="extra content">
-        <form method="post" action="">
+        <form method="post" action="paiementnounou.php">
             
 <?php
 echo '<input type="hidden" name="numdenounou" value=""' . $numdenounou . '">';
