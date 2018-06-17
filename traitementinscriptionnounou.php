@@ -1,7 +1,10 @@
 <?php
 
 require_once 'database1.php';
-session_start();
+if(!isset($_SESSION))
+{
+	session_start();
+}
 //On vérifie que les conditions ont été acceptées
 $conditions =$_POST['conditions'];
 if (!isset($conditions)){

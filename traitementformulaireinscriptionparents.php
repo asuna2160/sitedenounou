@@ -7,8 +7,10 @@
  */
 
 require_once 'database1.php';
-session_start();
-
+if(!isset($_SESSION))
+{
+	session_start();
+}
 $nom= strtoupper($_POST['nom']);
 $ville = strtoupper($_POST['ville']);
 $mail=$_POST['mail'];
