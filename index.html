@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chercher Nounous</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+<div class="left">
+    <center>
+        <h1 id="left-h1"> Qui veut jouer avec moi?</h1>
+        <image src="image/baby3.jpg" width="500px" style="margin-top:100px"></image>
+    </center>
+</div>
+
+<div class="right">
+    <center>
+        <h1>choisissez votre compte</h1>
+    </center>
+    <div id="login">
+        <form method="post" action="formulairepagedaccueil.php">
+        <input type="hidden" name="type" value="nounou">
+        </br>
+        <label> <b>Nounou</b></label>
+
+        <input type="submit">
+        </form>
+        <hr>
+        <form method="post" action="formulairepagedaccueil.php">
+            <input type="hidden" name="type" value="parent">
+            <label><b> Parent</b></label>
+            <input type="submit">
+        </form>
+        <hr>
+        <form method="post" action="formulairepagedaccueil.php">
+            <input type="hidden" name="type" value="administrateur">
+            <label> <b>Administrateur</b></label>
+            <input type="submit">
+        </form>
+    </div>
+    <br/>
+    <center>
+        <p id="p-inscription">INSCRIPTION</p>
+    </center>
+    <div id="inscription"><br/>
+
+        <label>Vous êtes Nounou</label>
+        <a href="formulaireinscriptionnounou.php">cliquer ici</a>
+        <br/>
+        <label>Vous êtes Parents</label>
+        <a href="formulaire%20d%20inscription%20des%20parents.php">cliquer ici</a>
+    </div>
+</div>
+
+</body>
+</html>

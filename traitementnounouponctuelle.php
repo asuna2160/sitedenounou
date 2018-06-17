@@ -257,7 +257,7 @@ $lireinfosnounou->execute();
  
     
 <link href="./components/card.css" rel="stylesheet" media="screen" >
-<link rel="stylesheet" type="text/css" href="CSS.css">
+<link rel="stylesheet" type="text/css" href="old/CSS.css">
 <div class="ui card">
     <div class="content">
         <div class="header"><?php echo $nom; echo $prenom?></div>

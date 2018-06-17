@@ -55,7 +55,7 @@ echo '<br>';
         <title>page de la nounou</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS.css">
+        <link rel="stylesheet" type="text/css" href="old/CSS.css">
     </head>
     <body>
         <form method="post" action="formulairedajoutdunenfant.php">
@@ -89,7 +89,7 @@ echo '<input type="hidden" name="numdeparent" value="' . $num . '">';
         <title>Louer une nounou</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS.css">
+        <link rel="stylesheet" type="text/css" href="old/CSS.css">
     </head>
     
 <?php

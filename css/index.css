@@ -1,0 +1,65 @@
+html, body {
+    min-height: 100% !important;
+    height: 98%;
+}
+
+.left{
+    background-color: orange;
+    float:left;
+    width:55%;
+    height:100%;
+}
+
+
+.right{
+    background-color: aliceblue;
+    float:right;
+    width:44%;
+    height:100%;
+}
+#login{
+    background-color: white;
+    height:30%;
+    margin:20px;
+
+
+}
+#inscription{
+    background-color: white;
+    height:10%;
+    margin:20px
+
+
+}
+
+h1 {
+    font-family: "Comic Sans MS", Sans-Serif;
+    color: #FF8000;
+    font-size: 38px;
+}
+
+#left-h1 {
+    font-family: Tahoma, Verdana, Arial, Sans-Serif;
+    color: white; font-size: 25px;
+    left: 30px
+}
+
+input {
+    background-color: #FFFFFF;border-right-style: solid; border-right-style: solid;
+    border-bottom-color: #0CD2E8;
+    border-left-style: solid;
+    border-left-color: #0CD2E8;
+    border-top-color: #0CD2E8;
+    border-bottom-style: solid;
+    border-right-color: #0CD2E8;
+    border-top-style: solid;
+    font-size: 20px;
+    line-height:30px ;
+    margin-left: 10px;
+}
+
+#p-inscription {
+    font-family: "Comic Sans MS", Sans-Serif;
+    color: #FF8000;
+    font-size: 30px;
+}
