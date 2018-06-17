@@ -91,12 +91,18 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
     </head>
     <body>
         <form method="post" action="demandedegarde.php">
-            
+            <div class="field">
+            <label>Vous souhaitez réserver une nounou ?</label>
+            </div>
             
             
             <div class="field">
             <input type="submit" value="Reserver" /><br> 
 <?php
+$enfant=$lirenumdenfants->fetch();
+if(!isset($enfant)){
+    echo '<input type="hidden" name="pasdenfant" value="0">';
+}
 echo '<input type="hidden" name="numdeparent" value="' . $num . '">';
 ?>
             </div>

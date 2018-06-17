@@ -7,19 +7,34 @@
     </head>
 
 <?php
+require_once 'database1.php';
+session_start();
+$num=$_SESSION['num'];
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$enfantsgardes = array();
+$lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
+    $lirenumdenfants->bindParam(1, $num);    
+    $lirenumdenfants->execute();
+    
+    while($lirenenf = $lirenumdenfants -> fetch()){        
+        if (isset ($_POST[$lirenenf["numero d'enfants"]])){
+            $enfantsgardes[] = $lirenenf["numero d'enfants"];
+        }
+    }
 
-
-
+ $_SESSION['nbenfants'] = count ($enfantsgardes);
+ $_SESSION['enfants'] = implode (' ', $enfantsgardes);
  
  
-require_once 'database1.php';
-session_start();
+ 
+$_SESSION['type'] = $_POST['type'];
+
+
 
 $recurrence = $_POST['recurrence']; 
 $type1 = $_POST['type'];
@@ -57,17 +72,22 @@ $explose = explode(' ', $JF);
     $explose[1] = $moisenchiffres[$explose[1]];
     $JF = $explose[2] . '-' . $explose[1] . '-' . $explose[0];
     
-      
 
 
 
 $HD=$_POST['HD'];
 $HF=$_POST['HF'];
 
+$_SESSION['HD']=$HD;
+$_SESSION['HF']=$HF;      
 
 
 $HD = $JD . ' ' . $HD;
 $HF = $JF . ' ' . $HF;
+
+
+$_SESSION['JD']=$JD;
+$_SESSION['JF']=$JF;
 
 //echo $JD . '<br>';
 //echo $JF . '<br>';
@@ -182,7 +202,7 @@ print '<img class=\'trombi\' src="' . $image . '" alt="texte alternatif" />';
 ?>
     
     <div class="content">
-        <h4 class="ui sub header"> INFROMATION</h4>
+        <h4 class="ui sub header"> INFORMATION</h4>
         <div class="ui small feed">
             <div class="event">
                 <div class="content">
@@ -211,7 +231,7 @@ print '<img class=\'trombi\' src="' . $image . '" alt="texte alternatif" />';
             </div>
             <div class="event">
                 <div class="content">
-                    <div class="summary"><a>PRESENTATIOON:</a><a><?php echo $presentation;?> </a>  </div>
+                    <div class="summary"><a>PRESENTATION:</a><a><?php echo $presentation;?> </a>  </div>
                 </div>
             </div>
             <div class="event">
@@ -226,7 +246,8 @@ print '<img class=\'trombi\' src="' . $image . '" alt="texte alternatif" />';
         <form method="post" action="paiementnounou.php">
             
 <?php
-echo '<input type="hidden" name="numdenounou" value=""' . $numdenounou . '">';
+$_SESSION['numdenounou']= $numdenounou;
+
 ?>
         <button class="ui button">CHOISIR</button>
         </form>
