@@ -116,7 +116,7 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
             <div class="control-group " >
                 <label class="control-label">Je veux que ma nounou parle une autre langue que le français</label>
                 <div class="controls input-append " >
-                <input size="16" type="checkbox" id="langue" value="1" onclick="chk(this)">
+                <input size="16" type="checkbox" id="langue" name="langue" value="1" onclick="chk(this)">
                 </div>
  
             </div>
@@ -124,16 +124,13 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
             <div class="control-group" id="hide1" >
                 <label class="control-label">Langues parlées</label>
                 <div class="controls input-append " >
-                    <input type="checkbox" name="langue" ><label>français</label>
-                    <input type="checkbox" name="langue"><label>chinois</label>
-                    <input type="checkbox" name="langue"><label>anglais</label>
-                    <input type="checkbox" name="langue"><label>espagol</label>
-                    <input type="checkbox" name="langue"><label>allemand</label>
-                    <input type="checkbox" name="langue"><label>italien</label>
-                    <input type="checkbox" name="langue"><label>hindi</label>
-                    <input type="checkbox" name="langue"><label>arabe</label>
-                    <input type="checkbox" name="langue"><label>hongrois</label>
-                    <input type="checkbox" name="langue"><label>portugais</label>
+<?php
+$langues = array ('français', 'anglais', 'chinois', 'espagnol', 'italien', 'portugais', 'hindi', 'arabe', 'allemand', 'russe', 'hongrois'); 
+foreach ($langues as $lang){
+    echo '<input type="radio" name="languechoisie" id="languechoisie" value="' . $lang . '"><label for="' . $lang . '">' . $lang . '</label>';
+}
+?>
+                    
                 </div>
             </div>
             

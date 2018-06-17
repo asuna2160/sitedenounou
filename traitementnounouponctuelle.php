@@ -29,9 +29,24 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
 
  $_SESSION['nbenfants'] = count ($enfantsgardes);
  $_SESSION['enfants'] = implode (' ', $enfantsgardes);
- 
- 
- 
+
+
+
+
+
+    
+ /*   $langues = array ('français', 'anglais', 'chinois', 'espagnol', 'italien', 'portugais', 'hindi', 'arabe', 'allemand', 'russe', 'hongrois'); 
+    foreach ($langues as $lang2){
+        if (isset ($_POST[$lang2])){
+
+        }
+    }
+}
+  * 
+  */
+
+//echo $listedeslangues;
+
 //$_SESSION['type'] = $_POST['type'];
 
 
@@ -45,6 +60,7 @@ $typearegarder = array(
 //$type = $typearegarder[$type1];
 $JD=$_POST['JD'];
 $JF=$_POST['JF'];
+
 //var_dump($_POST);
 $moisenchiffres = array(
     "Janvier" => "01",
@@ -105,10 +121,10 @@ $lire->bindParam(2, $JF);
 //echo '<br>' . 12;
 $lire->execute();
 //echo 3;
-while ($donnoun = $lire->fetch())
+while ($noundispo = $lire->fetch())
 {
  //echo 1;
-    $numdenounou=$donnoun['nounou'];
+    $numdenounou=$noundispo['nounou'];
     foreach($nounoudisponible as $value){
         if ($numdenounou == $value){
 //            echo 'a';
@@ -123,6 +139,55 @@ while ($donnoun = $lire->fetch())
     }
     $alreadyused = 0;
 }
+
+$nounbonnelangue = array();
+
+
+$languechoisie = $_POST['languechoisie'];
+
+
+if ($_POST['langue'] == 1){ 
+    /*
+    
+    $lirenumdenounou = $basedd->prepare("SELECT `numdenounou` FROM Nounou where login = ?");
+    $lirenumdenounou->bindParam(1, $login);
+    $lirenumdenounou->execute();
+    $donnes1 = $lirenumdenounou->fetch();
+   
+     * 
+     */ 
+    
+    $lire2 = $basedd->prepare("SELECT * FROM nounou");
+    
+    $lire2->execute();
+    
+
+    while ($nounlangues = $lire2->fetch()){
+        
+     
+        $nounBLABLA=explode(' ', $nounlangues['langues']);
+        
+        foreach ($nounBLABLA as $key => $value){
+            if ($value == $languechoisie){
+                $nounbonnelangue[] = $nounlangues['numdenounou'];
+            }
+        }
+       
+
+    }
+
+    
+}
+
+
+foreach ($nounoudisponible as $value){
+    foreach ($nounbonnelangue as $valuelang){
+        if ($value == $valuelang){
+            $nounOKOK[] = $value;
+        }
+    }
+}
+
 /* 
 $lireinfosnounou1 = $basedd->prepare("SELECT * FROM Nounou,Evaluation where nounou=numdenounou");
 $lireinfosnounou1->execute();
@@ -165,11 +230,14 @@ $nounoudisponible[] = $numdenounou;
  * 
  */
 $lireinfosnounou = $basedd->prepare("SELECT * FROM Nounou");
-    $lireinfosnounou->execute();
+$lireinfosnounou->execute();
     while ($donnee = $lireinfosnounou->fetch()){
-        $numdenounou = $donnee['numdenounou'];
-        foreach ($nounoudisponible as $value){
-            if ($numdenounou == $value){
+   //     $numdenounou = $donnee['numdenounou'];
+        
+        foreach ($nounOKOK as $value){
+            
+           
+            if ($donnee['numdenounou'] == $value){
                 $nom=$donnee['nom'];
                 $prenom=$donnee['prenom'];
                 $ville=$donnee['ville'];

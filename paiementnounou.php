@@ -68,7 +68,7 @@ else{
  
 $prix = $prixalheure * $duree;
 
-$type = $_SESSION['type'];
+$type = 0;
 
 //$enfants= $_SESSION['enfants'];
 $numenfants = '0';
@@ -81,18 +81,7 @@ $lirenumenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
     }
 
 
-
-$sql2 = "INSERT INTO `Prestation`(`Type`, `Montant`, `Virement effectue`, `jour debut`, `jour fin`, `heure debut`, `heure fin`, `enfants`, `nounou`, `parent`) VALUES ( :type, :Montant, 1, :JD, :JF, :HD, :HF, :enfants, :nounou, :parents )";
-$inse = $basedd->prepare($sql2);
-$inse->execute (array(':type' => $type, ':Montant' => $prix, ':JD' => $JD, ':JF' => $JF, ':HD' => $HDentiere, ':HF' => $HFentiere, ':enfants' => $numenfants, ':nounou' => $numdenounou, ':parents' => $numdeparent));
-
-
-
-
-
-
-
-
+    
 
 $lirenomdenounou = $basedd->prepare("SELECT * FROM Nounou where numdenounou = ?");
     $lirenomdenounou->bindParam(1, $numdenounou);
@@ -100,7 +89,26 @@ $lirenomdenounou = $basedd->prepare("SELECT * FROM Nounou where numdenounou = ?"
     $donnes1 = $lirenomdenounou->fetch();
 
 
-echo 'Vous devrez payer ' . $prix . ' euros à madame ' . $donnes1['prenom'] . ' ' . $donnes1['nom'];
+echo 'Vous devrez payer ' . $prix . ' euros à madame ' . $donnes1['prenom'] . ' ' . $donnes1['nom'];    
+    
+    $revenu = $prix + $donnes1['revenu'];
+    
+    
+    
+    
+
+$sql2 = "INSERT INTO `Prestation`(`Type`, `Montant`, `Virement effectue`, `jour debut`, `jour fin`, `heure debut`, `heure fin`, `enfants`, `nounou`, `parent`) VALUES ( :type, :Montant, 1, :JD, :JF, :HD, :HF, :enfants, :nounou, :parents )";
+$inse = $basedd->prepare($sql2);
+$inse->execute (array(':type' => $type, ':Montant' => $prix, ':JD' => $JD, ':JF' => $JF, ':HD' => $HDentiere, ':HF' => $HFentiere, ':enfants' => $numenfants, ':nounou' => $numdenounou, ':parents' => $numdeparent));
+
+$inse3 = $basedd->prepare('UPDATE `Nounou` SET `revenu`= ? where `numdenounou`= ?');
+$inse3-> execute (array($revenu, $numdenounou));
+
+
+
+
+
+
 
 ?>
 
