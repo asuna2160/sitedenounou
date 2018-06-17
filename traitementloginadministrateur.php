@@ -17,7 +17,7 @@ if ( $login=='admin01' && $passwd == 'mdp01' )
 }
 else
 {
-    echo "Erreurs sur login ou mot de passer";
+    echo "Erreurs sur le login ou le mot de passe";
     require_once 'formulairepagedaccueil.php';
 
 }

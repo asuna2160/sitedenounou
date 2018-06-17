@@ -1,11 +1,12 @@
 
 <?php
-$conditions =$_POST['conditions'];
-$login = $_POST['login'];
-if (isset($conditions)){
+
+
+if (isset($_POST['conditions'])){
     echo "Vous devez accepter les Condiitions d'Utilisation pour poursuivre.";
 }
-if (isset($login)){
+if (isset($_POST['login'])){
+    $login = $_POST['login'];
     echo 'Le login ' . $login . ' est déjà utilisé. Veuillez en choisir un autre.';
 }
 unset ($login);

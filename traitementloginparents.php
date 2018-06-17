@@ -13,8 +13,13 @@ $login_sth->execute(array($login,$passwd));
 $tot=$login_sth->fetchAll();
 if($tot[0][0]==0)
 {
-    echo "Erreurs sur login ou mot de passer";
-    require_once 'login1.php';
+     ?>
+<form method="post" action="formulairepagedaccueil.php">          
+    <p>Vous avez fait une erreur sur le login ou le mot de passe !</p><br>
+    <input type="hidden" name="type" value="parent"/>
+    <input type="submit" value="Réessayer" /><br>  
+</form>    
+    <?php
 }
 else
 {

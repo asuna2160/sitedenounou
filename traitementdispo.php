@@ -16,14 +16,17 @@ if(!isset($_SESSION))
 $num=$_POST['numdenounou'];
  
 //var_dump($_POST);
-$recurrence = $_POST['recurrence']; 
-$type = $_POST['type'];
-$typededispo = array(
+//$recurrence = $_POST['recurrence']; 
+//$type = $_POST['type'];
+/*$typededispo = array(
     'ponctuellement' => 0,
     'regulierement' => 1
 );
 $type = $typededispo[$type];
-$JD=$_POST['JD'];
+*/
+
+ $JD=$_POST['JD'];
+ 
 $JF=$_POST['JF'];
 
 $moisenchiffres = array(
@@ -86,7 +89,7 @@ $HD = $JD . ' ' . $HD;
 $HF = $JF . ' ' . $HF;
 //echo $HF;
 
-$recurrence=$_POST['recurrence'];
+//$recurrence=$_POST['recurrence'];
  
 /*
 echo $JD . ' <br>';
@@ -97,18 +100,17 @@ echo $num . ' <br>';
 echo $recurrence . ' <br>';
 echo $type . ' <br>';
 */
-$sql = "INSERT INTO Disponibilite (`jour debut`, `jour fin`, `heure debut`, `heure fin`, `nounou`, `reccurence`, `horaire reserve`, `type`) VALUES (:JD,:JF,:HD,:HF,:nounou,:reccurence,'0',:type)";
+$sql = "INSERT INTO Disponibilite (`jour debut`, `jour fin`, `heure debut`, `heure fin`, `nounou`, `reccurence`, `horaire reserve`, `type`) VALUES (:JD,:JF,:HD,:HF,:nounou,'une seule fois','0')";
 
 //echo 1;
 $inse = $basedd->prepare($sql);
 //echo 2;
-$inse->execute (array(':JD' => $JD, ':JF' => $JF, ':HD' => $HD, ':HF' => $HF, ':nounou' => $num, ':reccurence' => $recurrence,':type' => $type ));
-//echo 3; 
+$inse->execute (array(':JD' => $JD, ':JF' => $JF, ':HD' => $HD, ':HF' => $HF, ':nounou' => $num));
 //var_dump($inse);
 
 $_SESSION['num'] = $num;
 //var_dump($_SESSION);
-header('Location: pagedelanounou.php');
+//header('Location: pagedelanounou.php');
 //header('Location: planning.php');
 exit();
 //header('Location: http://www.example.com/');

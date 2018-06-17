@@ -21,8 +21,15 @@ if(isset($_POST['login']) and isset($_POST['passwd'])){
 
 if($tot[0][0]==0)
 {
-    echo "Erreurs sur login ou mot de passer";
-    require_once 'login1.php';
+ 
+    ?>
+<form method="post" action="formulairepagedaccueil.php">          
+    <p>Vous avez fait une erreur sur le login ou le mot de passe !</p><br>
+    <input type="hidden" name="type" value="nounou"/>
+    <input type="submit" value="Réessayer" /><br>  
+</form>    
+    <?php
+
 }
 else
 {
