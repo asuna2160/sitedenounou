@@ -1,8 +1,10 @@
 <?php
 
 require_once 'database1.php';
-session_start();
- 
+if(!isset($_SESSION))
+{
+	session_start();
+}
 $login = $_POST['login'];
 $passwd=$_POST['passwd'];
 
