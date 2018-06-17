@@ -31,7 +31,7 @@
             <legend>Déclarer votre disponibilité<br/></legend>
  
  
-            <div class="control-group">
+<!--            <div class="control-group">
                 <label class="control-label">Type</label>
                 <div class="controls input-append " >
                     <select name="type">
@@ -40,7 +40,7 @@
  
                     </select>
                 </div>
-            </div>
+            </div>-->
  
  
             <div class="control-group">
@@ -84,7 +84,7 @@
                 <input type="hidden" id="dtp_input3" value="" /><br/>
              </div>
  
-            <div class="control-group">
+<!--            <div class="control-group">
                 <label class="control-label">Récurrence</label>
                 <div class="controls input-append " >
                     <select name="recurrence">
@@ -100,7 +100,7 @@
                         <option>tous les dimanches</option>
                     </select>
                 </div>
-            </div>
+            </div>-->
  
  
             <center>

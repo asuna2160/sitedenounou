@@ -32,17 +32,17 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
  
  
  
-$_SESSION['type'] = $_POST['type'];
+//$_SESSION['type'] = $_POST['type'];
 
 
 
-$recurrence = $_POST['recurrence']; 
-$type1 = $_POST['type'];
+//$recurrence = $_POST['recurrence']; 
+//$type1 = $_POST['type'];
 $typearegarder = array(
     'ponctuellement' => 0,
     'regulierement' => 1
 );
-$type = $typearegarder[$type1];
+//$type = $typearegarder[$type1];
 $JD=$_POST['JD'];
 $JF=$_POST['JF'];
 //var_dump($_POST);
@@ -180,7 +180,7 @@ $lireinfosnounou = $basedd->prepare("SELECT * FROM Nounou");
                 $age=$donnee['age'];
                 $experience=$donnee['experience'];
                 $presentation=$donnee['presentation'];
-                $note=$donnee['note'];
+          $note='undefined';     
 
 
 

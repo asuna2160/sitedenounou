@@ -7,6 +7,7 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
     $lirenumdenfants->execute();
 
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
             <legend>Demande de garde <br/></legend>
  
  
-            <div class="control-group">
+<!--            <div class="control-group">
                 <label class="control-label">Type</label>
                 <div class="controls input-append " >
                     <select name="type" id="type">
@@ -45,7 +46,7 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
  
                     </select>
                 </div>
-            </div>
+            </div>-->
  
  
             <div class="control-group">
@@ -94,7 +95,7 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
  
  
  
-            <div class="control-group" id="hide">
+<!--            <div class="control-group" id="hide">
                 <label class="control-label">Récurrence</label>
                 <div class="controls input-append " >
                     <select name="recurrence" id="recurrence">
@@ -110,7 +111,7 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
                         <option>tous les dimanches</option>
                     </select>
                 </div>
-            </div>
+            </div>-->
  
             <div class="control-group " >
                 <label class="control-label">Je veux que ma nounou parle une autre langue que le français</label>

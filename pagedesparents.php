@@ -29,13 +29,15 @@ echo 'Bonjour ' . $login .'<br>';
 echo 'Monsieur, Madame ' . $nom . '<br>';
 echo 'Domiciliés à ' . $ville . '<br>' ;
 echo 'Contact : ' . $mail . '<br><br>';
-echo 'Vos enfants : <br>';
+
 
 
     $lireenfants = $basedd->prepare("SELECT * FROM ENFANTS where `parent` = ?");
     $lireenfants->bindParam(1, $num);
     $lireenfants->execute();
-
+if (isset($donenf["numero d'enfants"])){
+    echo 'Vos enfants : <br>';
+}
 
 while ($donenf = $lireenfants->fetch())
 {
@@ -43,12 +45,12 @@ while ($donenf = $lireenfants->fetch())
 
 }
 echo '<br>';
-
+//var_dump($donenf);
 ?>
 
 <html>
     <head>
-        <title>Ajout d'enfants</title>
+        <title>page de la nounou</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS.css">
@@ -73,9 +75,7 @@ echo '<input type="hidden" name="numdeparent" value="' . $num . '">';
 </html>
 
 <?php
-$lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
-    $lirenumdenfants->bindParam(1, $num);
-    $lirenumdenfants->execute();
+
     
 
 
@@ -89,24 +89,37 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS.css">
     </head>
+    
+<?php
+
+if (!isset($donenf["numero d'enfants"])){
+    echo '<div class="field">
+            <label>Il faut avoir des enfants pour avoir la chance de les faire garder !</label>
+            </div>';
+}
+else{
+    
+
+
+?>
     <body>
         <form method="post" action="demandedegarde.php">
             <div class="field">
             <label>Vous souhaitez réserver une nounou ?</label>
             </div>
-            
-            
             <div class="field">
-            <input type="submit" value="Reserver" /><br> 
+            
+                <input type="submit" value="Réserver">
+
+
 <?php
-$enfant=$lirenumdenfants->fetch();
+//$enfant=$lirenumdenfants->fetch();
 if(!isset($enfant)){
     echo '<input type="hidden" name="pasdenfant" value="0">';
 }
-echo '<input type="hidden" name="numdeparent" value="' . $num . '">';
+echo '<input type="hidden" name="numdeparent" value="' . $num . '"></div>';
+}
 ?>
-            </div>
-          
         </form>   
     </body>
 </html>

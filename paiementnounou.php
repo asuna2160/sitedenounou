@@ -12,6 +12,7 @@ $numdeparent=$_SESSION['num'];
 
 $nbenfants= $_SESSION['nbenfants'];
 
+
 $HD=$_SESSION['HD'];
 $HF=$_SESSION['HF'];
 $JD=$_SESSION['JD'];
@@ -47,26 +48,43 @@ else{
 
 
 
-$prixalheure = 7;
-$nbenfants= $nbenfants -1;
-if ($nbenfants > 1){
-    for ($i=1; $i=$nbenfants; $i=$i+1){
+
+
+
+if ($nbenfants == 1){
+    
+    $prixalheure = 7;
+}
+else{    
+    $prixalheure = 7;
+    $nbenfants= $nbenfants -1;
+
+    for ($i=1; $i<=$nbenfants; $i=$i+1){
         $prixalheure = $prixalheure + 4;
     }
 }
-else{
-    $prixalheure = $prixalheure + 4;
-}
+
+
+ 
 $prix = $prixalheure * $duree;
 
 $type = $_SESSION['type'];
 
-$enfants= $_SESSION['enfants'];
+//$enfants= $_SESSION['enfants'];
+$numenfants = '0';
+
+$lirenumenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
+    $lirenumenfants->bindParam(1, $numdeparent);
+    $lirenumenfants->execute();
+    while ($nenfant = $lirenumenfants->fetch()){
+        $numenfants=$numenfants + $nenfant["numero d'enfants"];
+    }
+
 
 
 $sql2 = "INSERT INTO `Prestation`(`Type`, `Montant`, `Virement effectue`, `jour debut`, `jour fin`, `heure debut`, `heure fin`, `enfants`, `nounou`, `parent`) VALUES ( :type, :Montant, 1, :JD, :JF, :HD, :HF, :enfants, :nounou, :parents )";
 $inse = $basedd->prepare($sql2);
-$inse->execute (array(':type' => $type, ':Montant' => $prix, ':JD' => $JD, ':JF' => $JF, ':HD' => $HDentiere, ':HF' => $HFentiere, ':enfants' => $enfants, ':nounou' => $numdenounou, ':parents' => $numdeparent));
+$inse->execute (array(':type' => $type, ':Montant' => $prix, ':JD' => $JD, ':JF' => $JF, ':HD' => $HDentiere, ':HF' => $HFentiere, ':enfants' => $numenfants, ':nounou' => $numdenounou, ':parents' => $numdeparent));
 
 
 
@@ -82,7 +100,7 @@ $lirenomdenounou = $basedd->prepare("SELECT * FROM Nounou where numdenounou = ?"
     $donnes1 = $lirenomdenounou->fetch();
 
 
-echo 'Vous devez payer ' . $prix . ' euros à madame ' . $donnes1['prenom'] . ' ' . $donnes1['nom'];
+echo 'Vous devrez payer ' . $prix . ' euros à madame ' . $donnes1['prenom'] . ' ' . $donnes1['nom'];
 
 ?>
 
