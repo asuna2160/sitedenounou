@@ -51,7 +51,7 @@ echo '<br>';
         <title>Ajout d'enfants</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS.css">
+        <link rel="stylesheet" type="text/css" href="old/CSS.css">
     </head>
     <body>
         <form method="post" action="formulairedajoutdunenfant.php">
@@ -87,7 +87,7 @@ $lirenumdenfants = $basedd->prepare("SELECT * FROM Enfants where parent = ?");
         <title>Louer une nounou</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS.css">
+        <link rel="stylesheet" type="text/css" href="old/CSS.css">
     </head>
     <body>
         <form method="post" action="demandedegarde.php">

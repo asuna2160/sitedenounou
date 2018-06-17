@@ -41,7 +41,7 @@ require_once 'database1.php';
 
     <body>
         <form method="post" action="traitementaccordnounou.php" enctype="multipart/form-data">
-        <link rel="stylesheet" type="text/css" href="CSS.css">
+        <link rel="stylesheet" type="text/css" href="old/CSS.css">
 <?php
 
 $liredemandenounou = $basedd->query("SELECT * FROM Nounou where valide = 0");
