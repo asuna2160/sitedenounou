@@ -35,8 +35,10 @@ echo 'Contact : ' . $mail . '<br><br>';
     $lireenfants = $basedd->prepare("SELECT * FROM ENFANTS where `parent` = ?");
     $lireenfants->bindParam(1, $num);
     $lireenfants->execute();
-if (isset($donenf["numero d'enfants"])){
+    $ilyadesenfants = $lireenfants->fetch();
+if (isset($ilyadesenfants["numero d'enfants"])){
     echo 'Vos enfants : <br>';
+    $enfantsexistes = 'oui';
 }
 
 while ($donenf = $lireenfants->fetch())
@@ -92,7 +94,7 @@ echo '<input type="hidden" name="numdeparent" value="' . $num . '">';
     
 <?php
 
-if (!isset($donenf["numero d'enfants"])){
+if ($enfantsexistes != 'oui'){
     echo '<div class="field">
             <label>Il faut avoir des enfants pour avoir la chance de les faire garder !</label>
             </div>';
