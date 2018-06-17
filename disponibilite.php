@@ -13,8 +13,8 @@
  
     </style>
     <title></title>
-    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="./bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="old/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="old/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
  
  
 </head>

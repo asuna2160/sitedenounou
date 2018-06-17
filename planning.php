@@ -1,11 +1,11 @@
 
 <html>
 <body style="background-color: aliceblue">
-<link href="./components/table.css" rel="stylesheet" media="screen" >
-<link href="./components/fullcalendar.css" />
-<link href="./components/lib/jquery.min.js" />
-<link href="./components/lib/moment.min.js" />
-<link href="./components/fullcalendar.js" />
+<link href="old/components/table.css" rel="stylesheet" media="screen" >
+<link href="old/components/fullcalendar.css" />
+<link href="old/components/lib/jquery.min.js" />
+<link href="old/components/lib/moment.min.js" />
+<link href="old/components/fullcalendar.js" />
 
 <script type="text/javascript">
         $(function() {
