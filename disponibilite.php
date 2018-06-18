@@ -115,10 +115,10 @@
      </form>
  </div>
  
- <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
- <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
- <script type="text/javascript" src="./bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
- <script type="text/javascript" src="./bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+ <script type="text/javascript" src="old/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+ <script type="text/javascript" src="old/bootstrap/js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="old/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+ <script type="text/javascript" src="old/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
  <script type="text/javascript">
      $('.form_datetime').datetimepicker({
          //language:  'fr',
