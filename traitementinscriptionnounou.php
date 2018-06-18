@@ -228,9 +228,7 @@ $lirenumdenounou = $basedd->prepare("SELECT `numdenounou` FROM Nounou where logi
 ?>
 
         <form method="post" action="pagedelanounou.php">
-<?php
-
-?>                    
+                   
             <p>Bravo ! Vous avez créé votre compte. Vous pouvez maintenant naviguer vers votre page.</p><br>
             <input type="submit" value="Naviguer vers mon compte" /><br>  
 
